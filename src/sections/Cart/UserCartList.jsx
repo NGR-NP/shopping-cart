@@ -22,7 +22,12 @@ const UserCartLists = ({ product }) => {
                     </Link>
                     <div className="flex my-5 gap-2 item-center">
                         <div className={`text-xs font-light text-gray-400 h-5 w-5 rounded-full ${product.color?.class}`} />
-                        <div className="text-xs font-light text-gray-400 flex items-center">{product.color?.name}</div>
+                        <div className="text-xs font-light text-gray-400 flex items-center">{product.color?.name}</div><b>|</b>
+                        <div className="text-xs font-light text-gray-400 flex items-center">Size: </div>
+                        <div className="text-xs font-light text-gray-400 flex items-center">{product.size?.name}</div>
+
+                    </div>
+                    <div className="flex my-5 gap-2 item-center">
                     </div>
                 </div>
 
