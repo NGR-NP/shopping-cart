@@ -1,12 +1,9 @@
 import NavBar from "../sections/Nav"
 import ProductSec from "../sections/ProductsSec"
 
-const Home = () => {
+function Home() {
     return (
-        <>
-            <NavBar />
-            <ProductSec />
-        </>
+        <ProductSec />
     )
 }
 export default Home
