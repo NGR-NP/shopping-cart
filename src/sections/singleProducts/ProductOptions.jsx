@@ -7,8 +7,8 @@ const ProductOptions = ({ product, ...props }) => {
     const handleClick = (e) => {
         e.preventDefault()
         dispatch(addProduct({
-            "uid": Date.now(),
-            "id": Date.now(),
+            "uid": product.id + props.selectedColor + props.selectedSize,
+            "id": product.id,
             "name": product.name,
             "imgUrl": product.imgUrl,
             "price": product.price,

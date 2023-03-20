@@ -6,9 +6,7 @@ const UserCartLists = ({ product }) => {
     const dispatch = useDispatch()
     const handleClick = (type) => {
         if (type === "dec") {
-            if (product.qty > 1) {
-                dispatch(decQty({ uid: product.uid }))
-            }
+            dispatch(decQty({ uid: product.uid }))
         } else {
             dispatch(incQty({ uid: product.uid }))
         }
@@ -33,7 +31,7 @@ const UserCartLists = ({ product }) => {
             <div className="flex justify-center items-center">
 
                 <div className="pr-8 flex ">
-                    <div className="font-semibold cursor-pointer" onClick={() => handleClick("dec")}>-</div>
+                    <div className={`${product.qty <= 2 ? "text-red-500" : "text-white"}font-semibold cursor-pointer`} onClick={() => handleClick("dec")}>-</div>
                     <input type="tel" className="focus:outline-none appearance-none text-black bg-gray-100 border h-6 w-8 rounded text-sm px-[0.7rem] mx-2" value={product.qty} onChange={(e) => setQty(e.target.value)} />
                     <div className="font-semibold cursor-pointer" onClick={() => handleClick("inc")}>+</div>
                 </div>

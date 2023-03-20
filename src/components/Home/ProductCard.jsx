@@ -7,7 +7,7 @@ const ProductCard = ({ product }) => {
     const handleClick = () => {
 
         dispatch(addProduct({
-            "uid": Date.now(),
+            "uid": product.id + product.colors[0] + product.sizes[0],
             "id": product.id,
             "name": product.name,
             "imgUrl": product.imgUrl,
