@@ -9,19 +9,32 @@ const CartSlice = createSlice({
     },
     reducers: {
         addProduct: (state, action) => {
-            const existingProductIndex = state.product.findIndex(product => product.uid === action.payload.uid);
+            const { id, name, imgUrl, price, rating, size, color, qty } = action.payload;
+            const uid = id + size.name + color.name;
+
+            const existingProductIndex = state.product.findIndex(product => product.uid === uid);
             if (existingProductIndex >= 0) {
                 const existingProduct = state.product[existingProductIndex];
                 state.product[existingProductIndex] = {
                     ...existingProduct,
-                    qty: existingProduct.qty + action.payload.qty
+                    qty: existingProduct.qty + qty
                 };
-                state.qty += action.payload.qty;
-                state.total += action.payload.price * action.payload.qty;
+                state.qty += qty;
+                state.total += price * qty;
             } else {
-                state.product.push(action.payload);
-                state.qty += action.payload.qty;
-                state.total += action.payload.price * action.payload.qty;
+                state.product.push({
+                    uid,
+                    id,
+                    name,
+                    imgUrl,
+                    price,
+                    rating,
+                    size,
+                    color,
+                    qty
+                });
+                state.qty += qty;
+                state.total += price * qty;
             }
         }
 
