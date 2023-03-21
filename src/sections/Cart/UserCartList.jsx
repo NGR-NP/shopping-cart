@@ -14,7 +14,7 @@ const UserCartLists = ({ product }) => {
     return (
         <div className="flex justify-between max-sm:flex-col max-sm:gap-8 text-white items-center mt-6 pt-6">
             <div className="flex  items-center">
-                <img src={product.imgUrl} width="60" height="60" className="rounded-full " />
+                <img src={product.imgUrl} width="60"  className="rounded-full" />
 
                 <div className="flex flex-col mx-4 text-start">
                     <Link to={`/product/${product.id}`}>
