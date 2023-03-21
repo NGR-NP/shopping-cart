@@ -37,7 +37,7 @@ const UserCartLists = ({ product }) => {
 
                 <div className="pr-8 flex ">
                     <div className={`${product.qty <= 2 ? "text-red-500" : "text-white"}font-semibold cursor-pointer`} onClick={() => handleClick("dec")}>-</div>
-                    <input type="tel" className="focus:outline-none appearance-none text-black bg-gray-100 border h-6 w-8 rounded text-sm px-[0.7rem] mx-2" value={product.qty} onChange={(e) => setQty(e.target.value)} />
+                    <input type="tel" className="focus:outline-none appearance-none text-black bg-gray-100 border h-6 w-10 text-center rounded text-sm px-[0.7rem] mx-2" value={product.qty} onChange={(e) => setQty(e.target.value)} />
                     <div className="font-semibold cursor-pointer" onClick={() => handleClick("inc")}>+</div>
                 </div>
 
