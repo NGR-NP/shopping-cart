@@ -1,34 +1,52 @@
+import Login from '@mui/icons-material/Login';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 const MobileNavLinks = () => {
     const [visible, setVisible] = useState(false)
+    const isUserLoggedIn = true
+    const navigate = useNavigate()
+    const userInfo =
+    {
+        name: "NGR", email: "ngr@email.com.np"
+    }
+
     return (
         <div className="flex relative items-center md:order-3">
-            <button type="button" className="flex p-2 mr-3 text-sm bg-gray-800 rounded-full md:mr-0  focus:outline-none focus:ring-2  text-gray-400 hover:bg-gray-700 focus:ring-gray-600">
-                <span className="sr-only">Open user menu</span>
-                <AccountCircleOutlinedIcon className="w-8 h-8 text-[#edf1f3] rounded-full" />
+            <button type="button" className={`
+            ${!isUserLoggedIn && 'max-md:hidden'} flex p-2 mr-3 text-sm bg-gray-800 rounded-full md:mr-0  focus:outline-none focus:ring-2  text-gray-400 hover:bg-gray-700 focus:ring-gray-600
+            `}>
+                {isUserLoggedIn
+                    ? <AccountCircleOutlinedIcon className="w-8 h-8 text-[#edf1f3] rounded-full" />
+
+                    :
+                    <Login onClick={() => navigate('/login')} />
+                }
             </button>
 
-
             {
-                visible && <div className="z-50 absolute top-12 right-3 text-base list-none divide-y rounded-lg shadow bg-gray-700 divide-gray-600" id="user-dropdown">
-                    <div className="px-4 py-3">
-                        <span className="block text-sm text-gray-900 dark:text-white">Bonnie Green</span>
-                        <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">name@flowbite.com</span>
-                    </div>
+                visible &&
+                <div className="z-50 absolute top-12 right-3 text-base list-none divide-y rounded-lg shadow bg-gray-700 divide-gray-600" id="user-dropdown">
+                    {
+                        isUserLoggedIn &&
+                        <div className="px-4 py-3">
+                            <span className="block text-sm text-gray-900 dark:text-white">{userInfo.name}</span>
+                            <span className="block text-sm font-medium text-gray-500 truncate dark:text-gray-400">{userInfo.email}</span>
+                        </div>
+                    }
                     <ul className="py-2" aria-labelledby="user-menu-button">
                         <li>
-                            <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</a>
+                            <Link to="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Dashboard</Link>
                         </li>
                         <li>
-                            <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Settings</a>
+                            <Link to="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">About</Link>
                         </li>
                         <li>
-                            <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>
+                            <Link to="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Contact</Link>
                         </li>
                         <li>
-                            <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Sign out</a>
+                            <Link to="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Log out</Link>
                         </li>
                     </ul>
                 </div>
